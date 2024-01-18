@@ -1,0 +1,279 @@
+"DOTAUnits"
+{
+//=================================================================================
+// Creeps: Bad Ranged Mega
+//=================================================================================
+	"npc_dota_creep_badguys_ranged_upgraded_mega"
+    {
+		"AttackDamageMin"			"92"		// Damage range min.
+		"AttackDamageMax"			"102"		// Damage range max.
+
+		"StatusHealth"				"950"		// Base health.
+	}	
+    
+//=================================================================================
+// Creeps: Good Ranged Mega
+//=================================================================================
+	"npc_dota_creep_goodguys_ranged_upgraded_mega"
+	{
+		"AttackDamageMin"			"92"		// Damage range min.
+		"AttackDamageMax"			"102"		// Damage range max.
+
+		"StatusHealth"				"950"		// Base health.
+	}	
+	
+//=================================================================================
+// Creeps: Bad Melee Mega
+//=================================================================================
+	"npc_dota_creep_badguys_melee_upgraded_mega"
+	{
+		"AttackDamageMin"			"82"		// Damage range min.
+		"AttackDamageMax"			"98"		// Damage range max.
+
+		"StatusHealth"				"1400"		// Base health.
+	}	
+    
+//=================================================================================
+// Creeps: Bad Melee Mega
+//=================================================================================
+	"npc_dota_creep_badguys_flagbearer_upgraded_mega"
+	{
+		"AttackDamageMin"			"82"		// Damage range min.
+		"AttackDamageMax"			"98"		// Damage range max.
+
+		"StatusHealth"				"1400"		// Base health.
+	}		
+    
+//=================================================================================
+// Creeps: Good Melee Mega
+//=================================================================================
+	"npc_dota_creep_goodguys_melee_upgraded_mega"
+	{
+		"AttackDamageMin"			"82"		// Damage range min.
+		"AttackDamageMax"			"98"		// Damage range max.
+
+		"StatusHealth"				"1400"		// Base health.
+	}
+
+//=================================================================================
+// Creeps: Good Melee Mega
+//=================================================================================
+	"npc_dota_creep_goodguys_flagbearer_upgraded_mega"
+	{
+		"AttackDamageMin"			"82"		// Damage range min.
+		"AttackDamageMax"			"98"		// Damage range max.
+
+		"StatusHealth"				"1400"		// Base health.
+	}
+    
+//=================================================================================
+// Creeps: Good Siege Mega
+//=================================================================================
+	"npc_dota_goodguys_siege_upgraded_mega"
+	{
+		"AttackDamageMin"			"102"		// Damage range min.
+		"AttackDamageMax"			"122"		// Damage range max.
+
+		"StatusHealth"				"1870"		// Base health.
+	}	
+	
+//=================================================================================
+// Creeps: Bad Siege Mega
+//=================================================================================
+	"npc_dota_badguys_siege_upgraded_mega"
+	{
+		"AttackDamageMin"			"102"		// Damage range min.
+		"AttackDamageMax"			"122"		// Damage range max.
+
+		"StatusHealth"				"1870"		// Base health.
+	}	
+
+    "npc_dota_tower1"
+    {
+        "BaseClass"					"npc_dota_tower"
+
+		"ArmorPhysical"				"12"		// Physical protection.
+		"StatusHealth"				"1800"		// Base health.
+    }
+    "npc_dota_tower2"
+    {
+        "BaseClass"					"npc_dota_tower"
+
+		"ArmorPhysical"				"16"		// Physical protection.
+		"StatusHealth"				"2500"		// Base health.
+    }
+    "npc_dota_tower3"
+    {
+        "BaseClass"					"npc_dota_tower"
+
+		"ArmorPhysical"				"16"		// Physical protection.
+		"StatusHealth"				"2500"		// Base health.
+    }
+    "npc_dota_tower4"
+    {
+        "BaseClass"					"npc_dota_tower"
+
+		"ArmorPhysical"				"21"		// Physical protection.
+		"StatusHealth"				"2600"		// Base health.
+    }
+
+//=================================================================================
+// Creeps: Good Tower 1 TOP
+//=================================================================================
+	"npc_dota_goodguys_tower1_top"
+	{
+        "BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 1 MID
+//=================================================================================
+	"npc_dota_goodguys_tower1_mid"
+	{
+		"BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 1 BOT
+//=================================================================================
+	"npc_dota_goodguys_tower1_bot"
+	{
+		"BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 2 TOP
+//=================================================================================
+	"npc_dota_goodguys_tower2_top"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 2 MID
+//=================================================================================
+	"npc_dota_goodguys_tower2_mid"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 2 BOT
+//=================================================================================
+	"npc_dota_goodguys_tower2_bot"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 3 TOP
+//=================================================================================
+	"npc_dota_goodguys_tower3_top"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 3 MID
+//=================================================================================
+	"npc_dota_goodguys_tower3_mid"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 3 BOT
+//=================================================================================
+	"npc_dota_goodguys_tower3_bot"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Good Tower 4
+//=================================================================================
+	"npc_dota_goodguys_tower4"
+	{
+		"BaseClass"					"npc_dota_tower4"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 1 TOP
+//=================================================================================
+	"npc_dota_badguys_tower1_top"
+	{
+        "BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 1 MID
+//=================================================================================
+	"npc_dota_badguys_tower1_mid"
+	{
+		"BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 1 BOT
+//=================================================================================
+	"npc_dota_badguys_tower1_bot"
+	{
+		"BaseClass"					"npc_dota_tower1"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 2 TOP
+//=================================================================================
+	"npc_dota_badguys_tower2_top"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 2 MID
+//=================================================================================
+	"npc_dota_badguys_tower2_mid"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 2 BOT
+//=================================================================================
+	"npc_dota_badguys_tower2_bot"
+	{
+		"BaseClass"					"npc_dota_tower2"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 3 TOP
+//=================================================================================
+	"npc_dota_badguys_tower3_top"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 3 MID
+//=================================================================================
+	"npc_dota_badguys_tower3_mid"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 3 BOT
+//=================================================================================
+	"npc_dota_badguys_tower3_bot"
+	{
+		"BaseClass"					"npc_dota_tower3"
+	}	
+
+//=================================================================================
+// Creeps: Bad Tower 4
+//=================================================================================
+	"npc_dota_badguys_tower4"
+	{
+		"BaseClass"					"npc_dota_tower4"
+	}	
+}

@@ -1,0 +1,31 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	maps = 
+	[
+		"turbo",
+	]
+	IsPlayable = 1
+	HeroGuidesSupported = 1
+	ForceDefaultGuide = 0
+	EnablePickRules = 1
+	map_options = 
+	[
+		{
+			MaxPlayers = 10
+			map = "turbo"
+		},
+	]
+	HideInTools = false
+	IsTemplate = false
+	CheckAFKPlayers = false
+	DefaultMap = ""
+	Default_Keys = null
+	DisableIK = false
+	EventGame = false
+	hero_picker = null
+	MinimalPrecache = true
+	MinPlayers = 1
+	MaxPlayers = 10
+	PenaltiesEnabled = false
+	TeamCount = -1
+}

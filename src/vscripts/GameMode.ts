@@ -1,7 +1,4 @@
 import { reloadable } from "./lib/tstl-utils";
-import { modifier_panic } from "./modifiers/modifier_panic";
-
-const heroSelectionTime = 20;
 
 declare global {
     interface CDOTAGameRules {
@@ -11,48 +8,54 @@ declare global {
 
 @reloadable
 export class GameMode {
-    public static Precache(this: void, context: CScriptPrecacheContext) {
-        PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf", context);
-        PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts", context);
-    }
+    public static Precache(this: void, context: CScriptPrecacheContext) {}
 
     public static Activate(this: void) {
-        // When the addon activates, create a new instance of this GameMode class.
         GameRules.Addon = new GameMode();
     }
 
     constructor() {
         this.configure();
 
-        // Register event listeners for dota engine events
         ListenToGameEvent("game_rules_state_change", () => this.OnStateChange(), undefined);
-        ListenToGameEvent("npc_spawned", event => this.OnNpcSpawned(event), undefined);
-
-        // Register event listeners for events from the UI
-        CustomGameEventManager.RegisterListener("ui_panel_closed", (_, data) => {
-            print(`Player ${data.PlayerID} has closed their UI panel.`);
-
-            // Respond by sending back an example event
-            const player = PlayerResource.GetPlayer(data.PlayerID)!;
-            CustomGameEventManager.Send_ServerToPlayer(player, "example_event", {
-                myNumber: 42,
-                myBoolean: true,
-                myString: "Hello!",
-                myArrayOfNumbers: [1.414, 2.718, 3.142]
-            });
-
-            // Also apply the panic modifier to the sending player's hero
-            const hero = player.GetAssignedHero();
-            hero.AddNewModifier(hero, undefined, modifier_panic.name, { duration: 5 });
-        });
+        ListenToGameEvent('npc_spawned', event => this.OnNpcSpawned(event), undefined);
     }
 
     private configure(): void {
-        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 3);
-        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 3);
+        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 5);
+        GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 5);
 
+        GameRules.SetSameHeroSelectionEnabled(true);
+
+
+        // Faster drafting
         GameRules.SetShowcaseTime(0);
-        GameRules.SetHeroSelectionTime(heroSelectionTime);
+        GameRules.SetHeroSelectionTime(20);
+        GameRules.SetHeroSelectPenaltyTime(0);
+        GameRules.SetPreGameTime(60);
+        GameRules.GetGameModeEntity().SetDraftingBanningTimeOverride(10);
+        GameRules.GetGameModeEntity().SetDraftingHeroPickSelectTimeOverride(30);
+        GameRules.SetStrategyTime(30);
+
+        // Shop + courier
+        GameRules.GetGameModeEntity().SetCanSellAnywhere(true);
+        GameRules.GetGameModeEntity().SetLoseGoldOnDeath(false);
+        GameRules.SetUseUniversalShopMode(true);
+        GameRules.GetGameModeEntity().SetUseTurboCouriers(true);
+        GameRules.GetGameModeEntity().SetFreeCourierModeEnabled(true);
+
+        // 2x Gold & Exp
+        GameRules.GetGameModeEntity().SetModifyExperienceFilter(event => this.ModifyExperienceFilter(event), this);
+        GameRules.GetGameModeEntity().SetModifyGoldFilter(event => this.ModifyGoldFilter(event), this);
+    }
+
+    ModifyExperienceFilter(event: ModifyExperienceFilterEvent): boolean {
+        event.experience *= 2;
+        return true;
+    }
+    ModifyGoldFilter(event: ModifyGoldFilterEvent): boolean {
+        event.gold *= 2;
+        return true;
     }
 
     public OnStateChange(): void {
@@ -60,48 +63,27 @@ export class GameMode {
 
         // Add 4 bots to lobby in tools
         if (IsInToolsMode() && state == GameState.CUSTOM_GAME_SETUP) {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 3; i++) {
                 Tutorial.AddBot("npc_dota_hero_lina", "", "", false);
             }
         }
 
-        if (state === GameState.CUSTOM_GAME_SETUP) {
-            // Automatically skip setup in tools
-            if (IsInToolsMode()) {
-                Timers.CreateTimer(3, () => {
-                    GameRules.FinishCustomGameSetup();
-                });
-            }
-        }
-
-        // Start game once pregame hits
         if (state === GameState.PRE_GAME) {
             Timers.CreateTimer(0.2, () => this.StartGame());
+        }
+    }
+    public OnNpcSpawned(event: NpcSpawnedEvent): void {
+        const unit = EntIndexToHScript(event.entindex) as CDOTA_BaseNPC;
+        if (unit.IsAncient()) {
+            unit.SetBaseHealthRegen(0);
         }
     }
 
     private StartGame(): void {
         print("Game starting!");
-
-        // Do some stuff here
     }
 
-    // Called on script_reload
     public Reload() {
         print("Script reloaded!");
-
-        // Do some stuff here
-    }
-
-    private OnNpcSpawned(event: NpcSpawnedEvent) {
-        // After a hero unit spawns, apply modifier_panic for 8 seconds
-        const unit = EntIndexToHScript(event.entindex) as CDOTA_BaseNPC; // Cast to npc since this is the 'npc_spawned' event
-        // Give all real heroes (not illusions) the meepo_earthbind_ts_example spell
-        if (unit.IsRealHero()) {
-            if (!unit.HasAbility("meepo_earthbind_ts_example")) {
-                // Add lua ability to the unit
-                unit.AddAbility("meepo_earthbind_ts_example");
-            }
-        }
     }
 }

@@ -1,0 +1,8 @@
+"lang"
+{
+    "Language"    "english"
+    "Tokens"
+    {
+        "addon_game_name"    "Clone Wars!!!"
+    }
+}
