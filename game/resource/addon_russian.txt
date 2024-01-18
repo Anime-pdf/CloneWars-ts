@@ -3,6 +3,6 @@
     "Language"    "russian"
     "Tokens"
     {
-        "addon_game_name"    "Ебейшая война клонов!!!"
+        "addon_game_name"    "Война клонов!!!"
     }
 }
